@@ -17,22 +17,22 @@
   <section class="report-info">
     <div class="info-row">
       <label for="month">For the Month of:</label>
-      <span id="month">____________________</span>
+      <span id="month" class="parish"> {{ month }}</span>
     </div>
 
     <div class="inline-group">
       <label for="year">Year:</label>
-      <input type="date" class="form-control" id="year" />
+      <span id="area" class="parish"> {{ year }}</span>
     </div>
 
     <div class="info-row">
       <label for="area">Area:</label>
-      <span id="area">____________________</span>
+      <span id="area" class="parish"> {{ area }}</span>
     </div>
 
     <div class="info-row">
-      <label for="parish">Parish:</label>
-      <span id="parish">___________________</span>
+      <label for="parish">Parish: </label>
+      <span id="parish" class="parish"> {{ parish }}</span>
     </div>
   </section>
 
@@ -58,15 +58,15 @@
     </thead>
     <tbody>
       <tr>
-        <td></td>
+        <td>{{ first_sunday }}</td>
         <td><b>Sunday Morning</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ men }}</td>
+        <td>{{ women }}</td>
+        <td>{{ children }}</td>
+        <td>{{ total }}</td>
+        <td>{{ preacher }}</td>
+        <td>{{ new }}</td>
+        <td>{{ guest }}</td>
         <td class="attendance"></td>
         <td class="attendance"></td>
         <td class="tithe">
@@ -90,13 +90,13 @@
         <td></td>
       </tr>
       <tr>
-        <td></td>
+        <td>{{ tuesday_date }}</td>
         <td>Tuesday and Wednesdsy</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ tuesday_men }}</td>
+        <td>{{ tuesday_women }}</td>
+        <td>{{ tuesday_children }}</td>
+        <td>{{ tuesday_total }}</td>
+        <td>{{ preacher }}</td>
         <td></td>
         <td></td>
         <td class="attendance"></td>
@@ -104,13 +104,13 @@
         <td></td>
       </tr>
       <tr>
-        <td></td>
+        <td>{{ thursday_date }}</td>
         <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ thursday_men }}</td>
+        <td>{{ thursday_women }}</td>
+        <td>{{ thursday_children }}</td>
+        <td>{{ thursday_total }}</td>
+        <td>{{ thursday_preacher }}</td>
         <td></td>
         <td></td>
         <td class="attendance"></td>
@@ -145,22 +145,24 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td><b>Sunday Morning</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let second of seconds">
+        <tr *ngIf="second.serviceType === 'Sunday Morning'">
+          <td>{{ second.date }}</td>
+          <td>
+            <b>{{ second.serviceType }}</b>
+          </td>
+          <td>{{ second.men || "" }}</td>
+          <td>{{ second.women }}</td>
+          <td>{{ second.children }}</td>
+          <td>{{ second.total }}</td>
+          <td>{{ preacher }}</td>
+          <td>{{ second.new }}</td>
+          <td>{{ second.guest }}</td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Sunday Evening</td>
@@ -175,34 +177,38 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td>Tuesday and Wednesdsy</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let second of seconds">
+        <tr *ngIf="second.serviceType === 'Tuesday and Wednesday'">
+          <td>{{ second.date }}</td>
+          <td>{{ second.serviceType }}</td>
+          <td>{{ second.men }}</td>
+          <td>{{ second.women }}</td>
+          <td>{{ second.children }}</td>
+          <td>{{ second.total }}</td>
+          <td>{{ second.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let second of seconds">
+        <tr *ngIf="second.serviceType === 'Thursday'">
+          <td>{{ second.date }}</td>
+          <td>{{ second.serviceType }}</td>
+          <td>{{ second.men }}</td>
+          <td>{{ second.women }}</td>
+          <td>{{ second.children }}</td>
+          <td>{{ second.total }}</td>
+          <td>{{ second.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Friday</td>
@@ -231,22 +237,24 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td><b>Sunday Morning</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let third of thirds">
+        <tr *ngIf="third.serviceType === 'Sunday Morning'">
+          <td>{{ third.date }}</td>
+          <td>
+            <b>{{ third.serviceType }}</b>
+          </td>
+          <td>{{ third.men }}</td>
+          <td>{{ third.women }}</td>
+          <td>{{ third.children }}</td>
+          <td>{{ third.total }}</td>
+          <td>{{ third.preacher }}</td>
+          <td>{{ third.new }}</td>
+          <td>{{ third.guest }}</td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Sunday Evening</td>
@@ -261,34 +269,38 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td>Tuesday and Wednesdsy</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let third of thirds">
+        <tr *ngIf="third.serviceType === 'Tuesday and Wednesday'">
+          <td>{{ third.date }}</td>
+          <td>{{ third.serviceType }}</td>
+          <td>{{ third.men }}</td>
+          <td>{{ third.women }}</td>
+          <td>{{ third.children }}</td>
+          <td>{{ third.total }}</td>
+          <td>{{ third.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let third of thirds">
+        <tr *ngIf="third.serviceType === 'Thursday'">
+          <td>{{ third.date }}</td>
+          <td>{{ third.serviceType }}</td>
+          <td>{{ third.men }}</td>
+          <td>{{ third.women }}</td>
+          <td>{{ third.children }}</td>
+          <td>{{ third.total }}</td>
+          <td>{{ third.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Friday</td>
@@ -317,22 +329,26 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td><b>Sunday Morning</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let fourth of fourths">
+        <tr *ngIf="fourth.serviceType === 'Sunday Morning'">
+          <td>{{ fourth.date }}</td>
+          <td>
+            <b>{{ fourth.serviceType }}</b>
+          </td>
+          <td>{{ fourth.men }}</td>
+          <td>{{ fourth.women }}</td>
+          <td>{{ fourth.children }}</td>
+          <td>{{ fourth.total }}</td>
+          <td>{{ fourth.preacher }}</td>
+          <td>{{ fourth.new }}</td>
+          <td>{{ fourth.guest }}</td>
+          <td class="attendance"></td>
+          <!-- Add this class -->
+          <td class="attendance"></td>
+          <!-- Add this class -->
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Sunday Evening</td>
@@ -347,34 +363,38 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td>Tuesday and Wednesdsy</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let fourth of fourths">
+        <tr *ngIf="fourth.serviceType === 'Tuesday and Wednesday'">
+          <td>{{ fourth.date }}</td>
+          <td>{{ fourth.serviceType }}</td>
+          <td>{{ fourth.men }}</td>
+          <td>{{ fourth.women }}</td>
+          <td>{{ fourth.children }}</td>
+          <td>{{ fourth.total }}</td>
+          <td>{{ fourth.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let fourth of fourths">
+        <tr *ngIf="fourth.serviceType === 'Thursday'">
+          <td>{{ fourth.date }}</td>
+          <td>{{ fourth.serviceType }}</td>
+          <td>{{ fourth.men }}</td>
+          <td>{{ fourth.women }}</td>
+          <td>{{ fourth.children }}</td>
+          <td>{{ fourth.total }}</td>
+          <td>{{ fourth.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Friday</td>
@@ -403,22 +423,26 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td><b>Sunday Morning</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td class="attendance"></td>
-        <!-- Add this class -->
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let fifth of fifths">
+        <tr *ngIf="fifth.serviceType === 'Sunday Morning'">
+          <td>{{ fifth.date }}</td>
+          <td>
+            <b>{{ fifth.serviceType }}</b>
+          </td>
+          <td>{{ fifth.men }}</td>
+          <td>{{ fifth.women }}</td>
+          <td>{{ fifth.children }}</td>
+          <td>{{ fifth.total }}</td>
+          <td>{{ fifth.preacher }}</td>
+          <td>{{ fifth.new }}</td>
+          <td>{{ fifth.guest }}</td>
+          <td class="attendance"></td>
+          <!-- Add this class -->
+          <td class="attendance"></td>
+          <!-- Add this class -->
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Sunday Evening</td>
@@ -433,34 +457,38 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td>Tuesday and Wednesdsy</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let fifth of fifths">
+        <tr *ngIf="fifth.serviceType === 'Tuesday and Wednesday'">
+          <td>{{ fifth.date }}</td>
+          <td>{{ fifth.serviceType }}</td>
+          <td>{{ fifth.men }}</td>
+          <td>{{ fifth.women }}</td>
+          <td>{{ fifth.children }}</td>
+          <td>{{ fifth.total }}</td>
+          <td>{{ fifth.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let fifth of fifths">
+        <tr *ngIf="fifth.serviceType === 'Thursday'">
+          <td>{{ fifth.date }}</td>
+          <td>{{ fifth.serviceType }}</td>
+          <td>{{ fifth.men }}</td>
+          <td>{{ fifth.women }}</td>
+          <td>{{ fifth.children }}</td>
+          <td>{{ fifth.total }}</td>
+          <td>{{ fifth.preacher }}</td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
       <tr>
         <td></td>
         <td>Friday</td>
@@ -517,48 +545,54 @@
         <td class="attendance"></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td>Tuesday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Thursday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>Sunday</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="attendance"></td>
-        <td class="attendance"></td>
-        <td></td>
-      </tr>
+      <ng-container *ngFor="let average of averages">
+        <tr *ngIf="average.serviceType === 'Tuesday'">
+          <td>{{ average.date }}</td>
+          <td>{{ average.serviceType }}</td>
+          <td>{{ average.men }}</td>
+          <td>{{ average.women }}</td>
+          <td>{{ average.children }}</td>
+          <td>{{ average.total }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let average of averages">
+        <tr *ngIf="average.serviceType ==='Thursday'">
+          <td>{{ average.date }}</td>
+          <td>{{ average.serviceType }}</td>
+          <td>{{ average.men }}</td>
+          <td>{{ average.women }}</td>
+          <td>{{ average.children }}</td>
+          <td>{{ average.total }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let average of averages">
+        <tr *ngIf="average.serviceType === 'Sunday'">
+          <td>{{ average.date  }}</td>
+          <td>{{ average.serviceType }}</td>
+          <td>{{ average.men }}</td>
+          <td>{{ average.women }}</td>
+          <td>{{ average.children }}</td>
+          <td>{{ average.total }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="attendance"></td>
+          <td class="attendance"></td>
+          <td></td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>
