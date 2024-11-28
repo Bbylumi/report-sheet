@@ -59,7 +59,7 @@ export class ReportComponent{
     },
     {
       date: '2024-11-12',
-      serviceType: 'Tuesday and Wednesday',
+      serviceType: 'Tue. / Wed.',
       men: "4",
       women: "5",
       children: "2",
@@ -100,7 +100,7 @@ export class ReportComponent{
   
     {
       date: '2024-11-19',
-      serviceType: 'Tuesday and Wednesday',
+      serviceType: 'Tue. / Wed',
       men: "4",
       women: "5",
       children: "2",
@@ -138,7 +138,7 @@ export class ReportComponent{
   
     {
       date: '2024-11-26',
-      serviceType: 'Tuesday and Wednesday',
+      serviceType: 'Tue. / Wed',
       men: "4",
       women: "5",
       children: "2",
@@ -174,7 +174,7 @@ export class ReportComponent{
     },
     {
       date: '',
-      serviceType: 'Tuesday and Wednesday',
+      serviceType: 'Tue. / Wed',
       men: "",
       women: "",
       children: "",

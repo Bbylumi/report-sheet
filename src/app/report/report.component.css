@@ -18,7 +18,7 @@ header {
   }
   
   .logo {
-    max-width: 116px;
+    max-width: 159px;
     height: auto;
     margin-right: 30px;
     margin-bottom: 20px;
@@ -39,8 +39,70 @@ header {
     font-weight: 600;
 }
 
+.SUNDAY{
+  font-size: 15px;
+    font-weight: 600;
+    margin-top: 1px;
+    text-align: center;
+}
+
+.SCHOOL{ 
+    font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1px;
+}
+
+.school{
+  line-height: 10px;
+  text-align: center;
+  margin-top: -4px;
+}
+
+.fruit{
+  line-height: 10px;
+  text-align: center
+}
+
+.percentage{
+  margin-top: -9px;
+}
+
+.congregation{
+  line-height: 10px;
+  margin-top: -9px;
+}
+
+.minister{
+  line-height: 10px;
+}
+
 .tithe{
     width: 30%;
+}
+
+.THANKSGIVING{
+  font-size: 15px;
+    font-weight: 600;
+    margin-top: -9px;
+}
+
+.CONGREGATION{
+  font-size: 15px;
+    font-weight: 600;
+    margin-top: -9px;
+}
+
+.SPECIAL{
+  font-size: 14px;
+  text-align: center;
+    font-weight: 600;
+    margin-top: 5px; 
+}
+
+.thanksgiving{
+  line-height: 10px;
+  text-align: center;
 }
 
 table{
@@ -114,9 +176,12 @@ table{
   th, td {
     padding: 8px;
     text-align: center;
+    height: 20px;
   }
 
-  
+.friday{
+  height: 20px;
+}  
 
   .report-info {
     display: flex;
@@ -142,7 +207,6 @@ table{
   th, td {
     border: 1px solid black;
     padding: 8px;
-    width: 39%;
     text-align: center;
   }
   
@@ -152,3 +216,8 @@ table{
     width: 6%;
   }
   
+
+  .footer{
+    display: inline-flex;
+    gap: 50px;
+  }
